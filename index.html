@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelvin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monda:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="style (1).css"> -->
+</head>
+<style>
+    #mainBody{
+  background-color: rgb(255, 255,255);
+    }
+    .clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+</style>
+<body>
+    
+        <div class="row h-auto clearfix" id="Heading" style="background-color: #1b2840">
+            <div class="col-sm mt-2 ml-2">
+                <img style ="float: left"src="logo.png" width="200" height="70">
+            </div>
+            <div class="col-sm clearfix ">
+                <div id="name" ><h2 class="text-center mt-3 text-white" style="font-weight: 700;">KCATS</h2></div>
+                <!-- style="border-radius: 25px;
+                background-color: rgba(255, 255, 255, 0.5);
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 490px; -->
+                <!-- margin-right: 490px;" -->
+                
+            </div>
+            <div class="col-sm">
+                <img class="mb-2" style = "float: right ;margin-right: 10px;margin-top: 10px;"src="logo1.png" width="70" height="70" alt="">
+            </div>
+        </div>
+        <div class="row d-flex flex-row" id="mainBody">
+          <div class="col ml-5 mt-5 mb-5 ">
+              <div class="card"  style="background:#d6e2e9;">
+                <video class='m-3' width ="700" controls>
+                    <source src="C:\Users\HP\Downloads\LED on and off.mp4" type="video/mp4">
+                </video>
+              </div>
+            
+          </div>
+          <div class="col mt-5 mr-5 mb-5">
+            <div class="card  justify-content center">
+        
+                <div class="card-body" style="background:#d6e2e9;">
+                    <img class="rounded-lg  d-block mx-auto " width="200" height="200" src="data:image/jpeg;base64,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">
+                  <!-- <h5 class="card-title text-center" style="font-size: 17px;">Name:Lokeshwan</h5>
+                  <h5 class="card-title text-center" style="font-size: 17px;">ID:dhdhdh</h5>
+                  <h5 class="card-title text-center" style="font-size: 17px;">Designation:dhdhdh</h5>
+                  <h5 class="card-title text-center" style="font-size: 17px;">Contact:hhddh</h5>
+                  <h5 class="card-title text-center" style="font-size: 17px;">Email:hdhdhd</h5>
+                  <h5 class="card-title text-center" style="font-size: 17px;">Dept:hdhdd</h5> -->
+                  <table class="table text-center d-block mx-auto" style="width: 25%;
+                  margin:0 auto;">
+                      <tr><th>Name</th><td>Surya kangeyan</td></tr>
+                      <tr><th>ID</th><td>18BCS067</td></tr>
+                      <tr><th>Name</th><td>Surya Kangeyan</td></tr>
+                      <tr><th>Name</th><td>Surya kangeyan</td></tr>
+                      
+                    
+                  </table>
+                  
+            
+
+
+                </div>
+                
+                
+              </div>
+          </div>
+        </div>
+        <div id="Contact" style=" background: #1b2840">
+           
+                    <div class="container text-white h-auto">
+                      <div class="row h-auto">
+                          <div id="Address" class="col-md-6 col-sm-4" style="margin-top: 30px;">
+                              <h5> Address</h5>
+                              <address><i class="fa fa-map-marker"></i>
+                                  Kumaraguru College Of Technology
+                                  <br> Chinnavedampatti(POST),
+                                  <br> Coimbatore<br>
+                                  <i class="fa fa-phone fa-lg"style="margin-right:5px"></i>  +91 9944312814<br>
+                                  <i class="fa fa-envelope fa-lg"style="margin-right:5px"></i>  <a href="lokeshwaran.20.2@protosem.tech">suryakangeyan.18cs@kct.ac.in</a>
+                              </address>
+                              <!-- <p><i class="far fa-copyright"></i></p> -->
+                          </div>
+                          
+                          <div class="col-md-6 col-sm-4 align-self-center">
+                              <div class="text-center" id="Header" style="color: #FFFFFF;">
+                                  <a class="btn btn-social-icon btn-linkedin " href="" target="_blank"><i class="fa fa-linkedin" style="color:#FFFFFF;font-size: 30px; margin-left: 20px"></i></a>
+                                  <a class="btn btn-social-icon btn-facebook" href="" target="_blank"><i class="fa fa-facebook" style="color:#FFFFFF;font-size: 30px;"></i></a>
+                                  <a class="btn btn-social-icon btn-instagram" href="" target="_blank"><i class="fa fa-instagram" style="color:#FFFFFF;font-size: 30px;"></i></a>
+                                  <!-- <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter" style="font-size: 25px;"></i></a> -->
+                                  <!-- <a class="btn btn-social-icon btn-google" href="http://github.com/"><i class="fa fa-github" style="font-size: 25px;"></i></a> -->
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+
+    
+    
+</body>
+</html>

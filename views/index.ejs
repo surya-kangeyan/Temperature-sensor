@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelvin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monda:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="/js/refresh.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="style (1).css"> -->
+</head>
+<style>
+    #mainBody{
+  background-color: rgb(255, 255,255);
+    }
+    .clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+</style>
+<script>
+    const client = new Paho.MQTT.Client("localhost",8000, "myclientID2" + parseInt(Math.random() * 100));
+    /*client.on('message',(topic,message)=>{
+        console.log(message.toString());
+        location.reload();
+    })
+    client.on('connect',()=>{
+        client.subscribe(topic);
+    })*/
+client.onConnectionLost = onConnectionLost
+client.onMessageArrived = onMessageArrived
+
+client.connect({ onSuccess: onConnect ,
+onFailure:onFailure})
+
+function onConnect(){
+  const topic = "723f942c-4e12-4c90-a97f-78fcf20b4cc4";
+  console.log('client connected to broker... next topic related stuff is to happen');
+  client.subscribe(topic)
+  console.log(`Subscribed to topic ${topic} and listening for messages...`)
+}
+function onFailure(err){
+    console.log(err);
+}
+function onMessageArrived(message) {
+  console.log("received message", message)
+  window.location.reload()
+  
+}
+
+function onConnectionLost(responseObject) {
+  console.log(responseObject)
+}
+</script>
+<body>
+    
+        <div class="row h-auto clearfix" id="Heading" style="background-color: #1b2840">
+            <div class="col-sm mt-2 ml-2">
+                <img style ="float: left"src="logo.png" width="200" height="70">
+            </div>
+            <div class="col-sm clearfix ">
+                <div id="name" ><h2 class="text-center mt-3 text-white" style="font-weight: 700;">K-CATS</h2></div>
+                
+            </div>
+            <div class="col-sm">
+                <img class="mb-2" style = "float: right ;margin-right: 10px;margin-top: 10px;"src="logo1.png" width="70" height="70" alt="">
+            </div>
+        </div>
+        <div class="row d-flex flex-row" id="mainBody">
+          <div class="col ml-5 mt-5 mb-5 ">
+              <div class="card" style="background-color: #d6e2e9;">
+                <iframe class='m-3' width ="700" height="550" src="http://10.1.45.207:8081/">
+                  
+                    </iframe>
+              </div>
+            
+          </div>
+          <div class="col mt-5 mr-5 mb-5">
+            <div class="card " style="background-color: #d6e2e9">
+                <% console.log(rows.length) %>
+                <div class="card-body">
+                  <% if(rows.length == 0){ %>
+                    <img class="rounded-circle  d-block mx-auto " width="200" height="200" src="Person.jpg">
+                  <% } else { %>
+                
+                  <img class="rounded-circle  d-block mx-auto " width="200" height="200" src="<%= rows[0].photo %>">
+                  <% } %>
+                 
+                  <table class="table d-block mx-auto" style="width: 40%;
+                  margin:0 auto;">
+                  <% if(rows.length == 0){ %>
+                    <tr><th>Name</th><td>Nil</td></tr>
+                    <tr><th>ID</th><td>Nil</td></tr>
+                    <tr><th>Designation</th><td>Nil</td></tr>
+                    <tr><th>Contact</th><td>Nil</td></tr>
+                    <tr><th>Email</th><td>Nil</td></tr>
+                    <tr><th>Dept</th><td>Nil</td></tr>
+                    <tr><th>Temperature</th><td>Nil</td></tr>
+                 <% } else { %>
+                
+                  <tr><th>Name</th><td><%= rows[0].name %></td></tr>
+                  <tr><th>ID</th><td><%= rows[0].uid %></td></tr>
+                  <tr><th>Designation</th><td><%= rows[0].designation %></td></tr>
+                  <tr><th>Contact</th><td><%= rows[0].mobile %></td></tr>
+                  <tr><th>Email</th><td><%= rows[0].email %></td></tr>
+                  <tr><th>Dept</th><td><%= rows[0].dept  %></td></tr>
+                  <tr><th>Temperature</th><td><%= temp[0].temperature %></td></tr>
+               <% } %>
+                     
+                      
+                    
+                  </table>
+                  
+            
+
+
+                </div>
+                
+                
+              </div>
+          </div>
+        </div>
+        <div id="Contact" style=" background:  #1b2840;">
+           
+                    <div class="container text-white h-auto">
+                      <div class="row h-auto">
+                          <div id="Address" class="col-md-6 col-sm-4" style="margin-top: 30px;">
+                              <h5> Address</h5>
+                              <address><i class="fa fa-map-marker"></i>
+                                  Kumaraguru College Of Technology
+                                  <br> Chinnavedampatti(POST),
+                                  <br> Coimbatore<br>
+                                  <i class="fa fa-phone fa-lg"style="margin-right:5px"></i>  +91 8760503125<br>
+                                  <i class="fa fa-envelope fa-lg"style="margin-right:5px"></i>  <a href="lokeshwaran.20.2@protosem.tech">lokeshwaran.18cs@kct.ac.in</a>
+                              </address>
+                              <!-- <p><i class="far fa-copyright"></i></p> -->
+                          </div>
+                          
+                          <div class="col-md-6 col-sm-4 align-self-center">
+                              <div class="text-center" id="Header" style="color: #FFFFFF;">
+                                  <a class="btn btn-social-icon btn-linkedin " href="https://www.linkedin.com/in/lokeshwaran-gnanasekaran-b25a0419a/" target="_blank"><i class="fa fa-linkedin" style="font-size: 30px; margin-left: 20px ; color: #FFFFFF;"></i></a>
+                                  <a class="btn btn-social-icon btn-facebook" href="" target="_blank"><i class="fa fa-facebook" style="font-size: 30px;color: #FFFFFF;"></i></a>
+                                  <a class="btn btn-social-icon btn-instagram" href="https://www.instagram.com/nglokeshwaran/" target="_blank"><i class="fa fa-instagram" style="font-size: 30px;color: #FFFFFF;"></i></a>
+                                  <!-- <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter" style="font-size: 25px;"></i></a> -->
+                                  <!-- <a class="btn btn-social-icon btn-google" href="http://github.com/"><i class="fa fa-github" style="font-size: 25px;"></i></a> -->
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+
+    
+    
+</body>
+</html>
